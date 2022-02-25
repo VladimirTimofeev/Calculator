@@ -7,19 +7,17 @@ public class Warker {
     }
     private OnTaskDoneListener callback;
 
-    public Warker(OnTaskDoneListener callback) {
-        this.callback = callback;
-    }
-
     @FunctionalInterface
     public interface OnTaskErrorListener{
         void onError(String result);
     }
     private OnTaskErrorListener errorCallback;
 
-    public Warker(OnTaskErrorListener errorCallback) {
+    public Warker(OnTaskDoneListener callback, OnTaskErrorListener errorCallback) {
+        this.callback = callback;
         this.errorCallback = errorCallback;
     }
+
 
 
     public void start() {
