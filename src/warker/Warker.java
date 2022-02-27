@@ -7,24 +7,18 @@ public class Warker {
     }
     private OnTaskDoneListener callback;
 
-    @FunctionalInterface
-    public interface OnTaskErrorListener{
-        void onError(String result);
-    }
-    private OnTaskErrorListener errorCallback;
 
-    public Warker(OnTaskDoneListener callback, OnTaskErrorListener errorCallback) {
+
+    public Warker(OnTaskDoneListener callback) {
         this.callback = callback;
-        this.errorCallback = errorCallback;
+//        this.errorCallback = errorCallback;
     }
 
 
 
     public void start() {
         for (int i = 0; i < 100 ; i++) {
-            if (i == 33) {
-                errorCallback.onError("Task " + i + " error");
-            } else {
+            if (i != 33) {
                 callback.onDone("Task " + i + " is done");
             }
         }
