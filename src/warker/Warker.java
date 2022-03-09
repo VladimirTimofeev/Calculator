@@ -11,7 +11,6 @@ public class Warker {
 
     public Warker(OnTaskDoneListener callback) {
         this.callback = callback;
-//        this.errorCallback = errorCallback;
     }
 
 
