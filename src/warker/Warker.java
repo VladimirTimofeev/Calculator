@@ -13,8 +13,6 @@ public class Warker {
         this.callback = callback;
     }
 
-
-
     public void start() {
         for (int i = 0; i < 100 ; i++) {
             if (i != 33) {
