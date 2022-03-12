@@ -8,7 +8,6 @@ public class Warker {
     private OnTaskDoneListener callback;
 
 
-
     public Warker(OnTaskDoneListener callback) {
         this.callback = callback;
     }
