@@ -1,9 +1,8 @@
-package warker;
-public class Error {
-    @FunctionalInterface
-    public interface OnTaskErrorListener{
-        void onError(String result);
-    }
+package worker.impl;
+import worker.OnTaskErrorListener;
+public class Error implements OnTaskErrorListener {
+    public void onError(String result) {
+        };
     private OnTaskErrorListener errorCallback;
 
     public Error(OnTaskErrorListener errorCallback) {
