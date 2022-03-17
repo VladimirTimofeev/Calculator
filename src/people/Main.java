@@ -1,6 +1,7 @@
 package people;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -34,7 +35,7 @@ public class Main {
                 .filter(x -> x.getEducation().equals(Education.HIGHER))
                 .filter(x ->
                     (x.getAge() >= 18 && x.getAge() < 65 && x.getSex().equals(Sex.MAN)) ||
-                    (x.getAge() >= 18 && x.getAge() < 60)
+                    (x.getAge() >= 18 && x.getAge() < 60 && x.getSex().equals(Sex.WOMAN))
                 )
                 .sorted(Comparator.comparing(Person::getFamily))
                 .collect(Collectors.toList());
