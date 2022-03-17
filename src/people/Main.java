@@ -42,12 +42,12 @@ public class Main {
         System.out.println(stream2);
         System.out.println();
 
+        //дополнительно вывод через предикаты
         Predicate<Person> m = x -> x.getSex().equals(Sex.MAN) && x.getAge() >= 18 && x.getAge() < 65;
         Predicate<Person> w = x -> x.getSex().equals(Sex.WOMAN) && x.getAge() >= 18 && x.getAge() < 60;
         List<Person> stream3 = persons.stream()
                 .filter(x -> x.getEducation().equals(Education.HIGHER))
-                .filter(m)
-                .filter(w)
+                .filter(m.or(w))
                 .sorted(Comparator.comparing(Person::getFamily))
                 .collect(Collectors.toList());
         System.out.println(stream3);
