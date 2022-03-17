@@ -8,7 +8,7 @@ public class Main {
         List<String> names = Arrays.asList("Jack", "Connor", "Harry", "George", "Samuel", "John");
         List<String> families = Arrays.asList("Evans", "Young", "Harris", "Wilson", "Davies", "Adamson", "Broun");
         Collection<Person> persons = new ArrayList<>();
-        for (int i = 0; i < 10_000; i++) {
+        for (int i = 0; i < 500; i++) {
             persons.add(new Person(
                     names.get(new Random().nextInt(names.size())),
                     families.get(new Random().nextInt(families.size())),
@@ -30,29 +30,14 @@ public class Main {
                 .collect(Collectors.toList());
         System.out.println(stream1);
 
-        List<String> streamMen = persons.stream()
+        List<Person> stream2 = persons.stream()
                 .filter(x -> x.getEducation().equals(Education.HIGHER))
-                .filter(x -> x.getAge() >= 18)
-                .filter(x -> x.getAge() < 60)
-                .filter(x -> x.getSex().equals(Sex.WOMAN))
-                .map(Person::getFamily)
+                .filter(x ->
+                    (x.getAge() >= 18 && x.getAge() < 65 && x.getSex().equals(Sex.MAN)) ||
+                    (x.getAge() >= 18 && x.getAge() < 60)
+                )
+                .sorted(Comparator.comparing(Person::getFamily))
                 .collect(Collectors.toList());
-
-        List<String> streamWomen = persons.stream()
-                .filter(x -> x.getEducation().equals(Education.HIGHER))
-                .filter(x -> x.getAge() >= 18)
-                .filter(x -> x.getAge() < 65)
-                .filter(x -> x.getSex().equals(Sex.MAN))
-                .map(Person::getFamily)
-                .collect(Collectors.toList());
-
-        List<String> stream2 = new ArrayList<>();
-        stream2.addAll(streamMen);
-        stream2.addAll(streamWomen);
-        stream2.stream()
-                .sorted()
-                .collect(Collectors.toList());
-
         System.out.println(stream2);
     }
 }
